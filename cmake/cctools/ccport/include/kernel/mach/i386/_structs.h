@@ -1,7 +1,49 @@
 #ifndef CCPORT_MACH_I386__STRUCTS_H_
 #define CCPORT_MACH_I386__STRUCTS_H_
 
+#include <stdint.h>
+
+#ifndef __uint8_t
+#define ccport_uint8_t_defined
+#define __uint8_t uint8_t
+#endif /* __uint8_t */
+
+#ifndef __uint16_t
+#define ccport_uint16_t_defined
+#define __uint16_t uint16_t
+#endif /* __uint16_t */
+
+#ifndef __uint32_t
+#define ccport_uint32_t_defined
+#define __uint32_t uint32_t
+#endif /* __uint32_t */
+
+#ifndef __uint64_t
+#define ccport_uint64_t_defined
+#define __uint64_t uint64_t
+#endif /* __uint64_t */
+
 #include_next <mach/i386/_structs.h>
+
+#ifdef ccport_uint8_t_defined
+#undef ccport_uint8_t_defined
+#undef __uint8_t
+#endif /* ccport_uint8_t_defined */
+
+#ifdef ccport_uint16_t_defined
+#undef ccport_uint16_t_defined
+#undef __uint16_t
+#endif /* ccport_uint16_t_defined */
+
+#ifdef ccport_uint32_t_defined
+#undef ccport_uint32_t_defined
+#undef __uint32_t
+#endif /* ccport_uint32_t_defined */
+
+#ifdef ccport_uint64_t_defined
+#undef ccport_uint64_t_defined
+#undef __uint64_t
+#endif /* ccport_uint64_t_defined */
 
 /* https://github.com/apple/darwin-xnu/blob/xnu-4903.221.2/osfmk/mach/i386/_structs.h#L235 */
 #ifndef _STRUCT_YMM_REG
@@ -34,17 +76,17 @@ _STRUCT_X86_AVX512_STATE32 {
     int __fpu_reserved[2];
     _STRUCT_FP_CONTROL __fpu_fcw;
     _STRUCT_FP_STATUS __fpu_fsw;
-    __uint8_t __fpu_ftw;
-    __uint8_t __fpu_rsrv1;
-    __uint16_t __fpu_fop;
-    __uint32_t __fpu_ip;
-    __uint16_t __fpu_cs;
-    __uint16_t __fpu_rsrv2;
-    __uint32_t __fpu_dp;
-    __uint16_t __fpu_ds;
-    __uint16_t __fpu_rsrv3;
-    __uint32_t __fpu_mxcsr;
-    __uint32_t __fpu_mxcsrmask;
+    uint8_t __fpu_ftw;
+    uint8_t __fpu_rsrv1;
+    uint16_t __fpu_fop;
+    uint32_t __fpu_ip;
+    uint16_t __fpu_cs;
+    uint16_t __fpu_rsrv2;
+    uint32_t __fpu_dp;
+    uint16_t __fpu_ds;
+    uint16_t __fpu_rsrv3;
+    uint32_t __fpu_mxcsr;
+    uint32_t __fpu_mxcsrmask;
     _STRUCT_MMST_REG __fpu_stmm0;
     _STRUCT_MMST_REG __fpu_stmm1;
     _STRUCT_MMST_REG __fpu_stmm2;
@@ -97,17 +139,17 @@ _STRUCT_X86_AVX512_STATE64 {
     int __fpu_reserved[2];
     _STRUCT_FP_CONTROL __fpu_fcw;
     _STRUCT_FP_STATUS __fpu_fsw;
-    __uint8_t __fpu_ftw;
-    __uint8_t __fpu_rsrv1;
-    __uint16_t __fpu_fop;
-    __uint32_t __fpu_ip;
-    __uint16_t __fpu_cs;
-    __uint16_t __fpu_rsrv2;
-    __uint32_t __fpu_dp;
-    __uint16_t __fpu_ds;
-    __uint16_t __fpu_rsrv3;
-    __uint32_t __fpu_mxcsr;
-    __uint32_t __fpu_mxcsrmask;
+    uint8_t __fpu_ftw;
+    uint8_t __fpu_rsrv1;
+    uint16_t __fpu_fop;
+    uint32_t __fpu_ip;
+    uint16_t __fpu_cs;
+    uint16_t __fpu_rsrv2;
+    uint32_t __fpu_dp;
+    uint16_t __fpu_ds;
+    uint16_t __fpu_rsrv3;
+    uint32_t __fpu_mxcsr;
+    uint32_t __fpu_mxcsrmask;
     _STRUCT_MMST_REG __fpu_stmm0;
     _STRUCT_MMST_REG __fpu_stmm1;
     _STRUCT_MMST_REG __fpu_stmm2;
