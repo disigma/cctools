@@ -1,0 +1,16 @@
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script:
+    sudo apt-get install -y gobjc gobjc++
+  displayName: Installing dependencies
+- script:
+    cmake -E make_directory build
+  displayName: Creating build directory
+- script:
+    cmake -E chdir build cmake ../cmake
+  displayName: Configuring
+- script:
+    cmake --build build --target all
+  displayName: Building
