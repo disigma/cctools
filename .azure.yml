@@ -12,5 +12,5 @@ steps:
     cmake -E chdir build cmake ../cmake
   displayName: Configuring
 - script:
-    cmake --build build --target all
+    cmake --build build --target cctools
   displayName: Building

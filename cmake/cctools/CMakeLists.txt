@@ -10,6 +10,11 @@ if(NOT CCTOOLS_ROOT)
     set(CCTOOLS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../cctools")
 endif()
 
+macro(cc_add_executable name)
+    add_executable(${name} ${ARGN})
+    list(APPEND CCTOOLS_TARGETS ${name})
+endmacro()
+
 # CCPORT
 add_subdirectory(ccport)
 include_directories($<TARGET_PROPERTY:ccport,INCLUDE_DIRECTORIES>)
@@ -34,27 +39,27 @@ set_property(
 
 # AR
 aux_source_directory(${CCTOOLS_ROOT}/ar AR_SOURCES)
-add_executable(ar ${AR_SOURCES})
+cc_add_executable(ar ${AR_SOURCES})
 target_link_libraries(ar stuff)
 
 # EFITOOLS
 aux_source_directory(${CCTOOLS_ROOT}/efitools EFITOOLS_SOURCES)
 foreach(source ${EFITOOLS_SOURCES})
     get_filename_component(target ${source} NAME_WE)
-    add_executable(${target} ${source})
+    cc_add_executable(${target} ${source})
     target_link_libraries(${target} stuff)
 endforeach()
 
 # GPROF
 aux_source_directory(${CCTOOLS_ROOT}/gprof GPROF_SOURCES)
-add_executable(gprof ${GPROF_SOURCES})
+cc_add_executable(gprof ${GPROF_SOURCES})
 target_link_libraries(gprof stuff)
 
 # MISC
 aux_source_directory(${CCTOOLS_ROOT}/misc MISC_SOURCES)
 foreach(source ${MISC_SOURCES})
     get_filename_component(target ${source} NAME_WE)
-    add_executable(${target} ${source})
+    cc_add_executable(${target} ${source})
     target_link_libraries(${target} stuff)
 endforeach()
 
@@ -62,7 +67,7 @@ endforeach()
 add_definitions(-DEFI_SUPPORT)
 cc_check_compile_flag(-Wno-endif-labels)
 aux_source_directory(${CCTOOLS_ROOT}/otool OTOOL_SOURCES)
-add_executable(otool ${OTOOL_SOURCES})
+cc_add_executable(otool ${OTOOL_SOURCES})
 target_link_libraries(otool stuff objc2 dl demangle)
 target_include_directories(
     otool PRIVATE
@@ -72,5 +77,7 @@ target_include_directories(
 
 # LD
 aux_source_directory(${CCTOOLS_ROOT}/ld LD_SOURCES)
-add_executable(ld ${LD_SOURCES})
+cc_add_executable(ld ${LD_SOURCES})
 target_link_libraries(ld stuff)
+
+add_custom_target(cctools DEPENDS ${CCTOOLS_TARGETS})
