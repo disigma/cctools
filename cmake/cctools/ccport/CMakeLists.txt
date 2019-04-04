@@ -24,3 +24,9 @@ include_directories(
 )
 
 add_library(ccport ccport.c)
+
+get_directory_property(CCPORT_DEFINITIONS COMPILE_DEFINITIONS)
+get_directory_property(CCPORT_COMPILE_OPTIONS COMPILE_OPTIONS)
+
+target_compile_definitions(ccport PUBLIC ${CCPORT_DEFINITIONS})
+target_compile_options(ccport PUBLIC ${CCPORT_COMPILE_OPTIONS})

@@ -3,6 +3,8 @@
 
 #include <mach/mach_vm.h>
 
+__BEGIN_DECLS
+
 /* https://developer.apple.com/documentation/kernel/1402429-mach_vm_machine_attribute */
 kern_return_t vm_machine_attribute(
     vm_map_t target_task,
@@ -11,5 +13,7 @@ kern_return_t vm_machine_attribute(
     vm_machine_attribute_t attribute,
     vm_machine_attribute_val_t *value
 );
+
+__END_DECLS
 
 #endif /* CCPORT_MACH_VM_MAP_H_ */
