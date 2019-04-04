@@ -2,23 +2,36 @@ cmake_minimum_required(VERSION 3.0)
 
 project(cctools)
 
-include(Prepare.cmake)
+set(CMAKE_C_STANDARD 99)
 
 option(CCTOOLS_ROOT "Source directory of cctools")
-
 if(NOT CCTOOLS_ROOT)
     set(CCTOOLS_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../cctools")
 endif()
 
+# CCPORT
+add_subdirectory(ccport)
+set_directory_properties(
+    PROPERTIES
+    INCLUDE_DIRECTORIES $<TARGET_PROPERTY:ccport,INCLUDE_DIRECTORIES>
+    COMPILE_DEFINITIONS $<TARGET_PROPERTY:ccport,PUBLIC_COMPILE_DEFINITIONS>
+)
+add_compile_options(-include config.h)
+
+# Check and set compile flags
+include(CcChecks)
+cc_check_compile_flag(-Wno-format)
+cc_check_compile_flag(-Wno-incompatible-pointer-types)
+cc_check_compile_flag(-Wno-int-conversion)
+cc_check_compile_flag(-Wno-deprecated-declarations)
+cc_check_compile_flag(-Wno-deprecated)
+cc_check_compile_flag(-Wno-attributes)
+
+# Macro for adding executables
 macro(cc_add_executable name)
     add_executable(${name} ${ARGN})
     list(APPEND CCTOOLS_TARGETS ${name})
 endmacro()
-
-# CCPORT
-add_subdirectory(ccport)
-include_directories($<TARGET_PROPERTY:ccport,INCLUDE_DIRECTORIES>)
-add_compile_options(-include config.h)
 
 # DEMANGLE
 add_subdirectory(demangle)

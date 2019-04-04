@@ -3,7 +3,10 @@
 
 #include_next <string.h>
 
+#ifndef HAVE_STRMODE
 #include <fcntl.h>
+
+#define strmode ccport_strmode
 
 __BEGIN_DECLS
 
@@ -11,5 +14,6 @@ __BEGIN_DECLS
 extern void strmode(mode_t mode, char *bp);
 
 __END_DECLS
+#endif /* HAVE_STRMODE */
 
 #endif /* CCPORT_STRING_H_ */
