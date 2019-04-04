@@ -6,6 +6,8 @@
 #else
 #include <stddef.h>
 
+__BEGIN_DECLS
+
 extern int sysctl(
     int *name,
     int nlen,
@@ -14,6 +16,9 @@ extern int sysctl(
     void *newval,
     size_t newlen
 );
+
+__END_DECLS
+
 #endif /* HAVE_SYS_SYSCTL_H */
 
 #ifndef CTL_KERN

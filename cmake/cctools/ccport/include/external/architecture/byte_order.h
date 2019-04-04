@@ -11,7 +11,11 @@ enum NXByteOrder {
     NX_BigEndian
 };
 
+__BEGIN_DECLS
+
 /* https://developer.apple.com/documentation/kernel/1517899-nxhostbyteorder */
 enum NXByteOrder NXHostByteOrder(void);
+
+__END_DECLS
 
 #endif /* CCPORT_ARCHITECTURE_BYTE_ORDER_H_ */

@@ -9,6 +9,8 @@
 /* https://developer.apple.com/documentation/kernel/vm_map_t */
 typedef mach_port_t vm_map_t;
 
+__BEGIN_DECLS
+
 /* http://web.mit.edu/darwin/src/modules/xnu/osfmk/man/vm_allocate.html */
 /* https://developer.apple.com/documentation/kernel/1585381-vm_allocate */
 kern_return_t vm_allocate(
@@ -25,5 +27,7 @@ kern_return_t vm_deallocate(
     vm_address_t address,
     vm_size_t size
 );
+
+__END_DECLS
 
 #endif /* CCPORT_MACH_MACH_VM_H_ */

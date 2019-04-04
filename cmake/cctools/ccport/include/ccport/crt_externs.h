@@ -4,6 +4,8 @@
 
 #include <mach-o/loader.h>
 
+__BEGIN_DECLS
+
 #ifdef __LP64__
 extern struct mach_header_64 *
 #else
@@ -11,5 +13,7 @@ extern struct mach_header *
 #endif /* __LP64__ */
 
 _NSGetMachExecuteHeader(void);
+
+__END_DECLS
 
 #endif /* CCPORT_CRT_EXTERNS_H_ */

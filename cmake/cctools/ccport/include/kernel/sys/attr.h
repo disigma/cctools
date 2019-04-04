@@ -22,6 +22,8 @@ struct attrlist {
 #define ATTR_FILE_DATALENGTH 0x00000200
 #define ATTR_FILE_RSRCLENGTH 0x00001000
 
+__BEGIN_DECLS
+
 /* https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/getattrlist.2.html */
 int getattrlist(
     const char* path,
@@ -30,5 +32,7 @@ int getattrlist(
     size_t attrBufSize,
     unsigned long options
 );
+
+__END_DECLS
 
 #endif /* CCPORT_SYS_ATTR_H_ */

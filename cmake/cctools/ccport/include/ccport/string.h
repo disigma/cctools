@@ -5,7 +5,11 @@
 
 #include <fcntl.h>
 
+__BEGIN_DECLS
+
 /* https://www.freebsd.org/cgi/man.cgi?query=strmode */
 extern void strmode(mode_t mode, char *bp);
+
+__END_DECLS
 
 #endif /* CCPORT_STRING_H_ */
