@@ -27,7 +27,7 @@ TAPI_NAMESPACE_INTERNAL_BEGIN
 FileManager::FileManager(
     const FileSystemOptions &fileSystemOpts,
     IntrusiveRefCntPtr<FileSystemStatCacheFactory> cacheFactory,
-    IntrusiveRefCntPtr<vfs::FileSystem> fs)
+    IntrusiveRefCntPtr<clang::vfs::FileSystem> fs)
     : clang::FileManager(fileSystemOpts, fs), cacheFactory(cacheFactory) {
   // Record if initialized with VFS.
   if (fs)

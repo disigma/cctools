@@ -29,11 +29,13 @@ using namespace llvm::object;
 namespace llvm {
 namespace MachO {
 // clang-format off
+#if 0
   enum MissingPlatformType {
     PLATFORM_IOSSIMULATOR     = 7,
     PLATFORM_TVOSSIMULATOR    = 8,
     PLATFORM_WATCHOSSIMULATOR = 9,
   };
+#endif
 // clang-format on
 } // end namespace MachO.
 } // end namespace llvm.

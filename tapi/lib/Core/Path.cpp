@@ -67,7 +67,7 @@ enumerateFiles(FileManager &fm, StringRef path,
     if (ec)
       return errorCodeToError(ec);
 
-    auto path = i->getName();
+    auto path = i->path();
     if (func(path))
       files.emplace_back(path);
   }
