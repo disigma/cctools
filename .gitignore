@@ -20,3 +20,6 @@
 
 # Clang docs
 /clang/docs
+
+# zlib
+/zlib/zconf.h
