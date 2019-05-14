@@ -491,8 +491,8 @@ void APIPrinter::visitObjCProtocol(const API::ObjCProtocolRecord &protocol) {
   os << "  protocols:";
   if (hasColors)
     os.resetColor();
-  for (const auto &protocol : protocol.protocols)
-    os << " " << protocol;
+  for (const auto &proto : protocol.protocols)
+    os << " " << proto;
   os << "\n";
 
   if (hasColors)
