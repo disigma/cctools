@@ -3,13 +3,10 @@ pool:
 
 steps:
 - script:
-    sudo apt-get install -y gobjc gobjc++
-  displayName: Installing dependencies
-- script:
     cmake -E make_directory build
   displayName: Creating build directory
 - script:
-    cmake -E chdir build cmake ../cmake
+    cmake -E chdir build cmake ../cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
   displayName: Configuring
 - script:
     cmake --build build --target cctools -- -j 4
