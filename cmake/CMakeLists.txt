@@ -7,6 +7,7 @@ add_subdirectory(cctools)
 add_subdirectory(libressl)
 add_subdirectory(zlib)
 add_subdirectory(libxml2)
+add_subdirectory(xar)
 add_subdirectory(llvm)
 
-add_dependencies(cctools tapi openssl zlibstatic xml2)
+add_dependencies(cctools tapi xar)
