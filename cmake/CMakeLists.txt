@@ -6,6 +6,7 @@ add_subdirectory(libobjc2)
 add_subdirectory(cctools)
 add_subdirectory(libressl)
 add_subdirectory(zlib)
+add_subdirectory(libxml2)
 add_subdirectory(llvm)
 
-add_dependencies(cctools tapi openssl zlibstatic)
+add_dependencies(cctools tapi openssl zlibstatic xml2)
