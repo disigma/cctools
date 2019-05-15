@@ -36,7 +36,7 @@ endfunction(cc_check_headers)
 function(cc_check_funcs)
     include(CheckCSourceCompiles)
     foreach(fun ${ARGV})
-        cc_check_name("HAVE_${name}" variable)
+        cc_check_name("HAVE_${fun}" variable)
         check_c_source_compiles(
             "
                 void ${fun}();
