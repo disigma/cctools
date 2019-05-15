@@ -2410,7 +2410,7 @@ void Parser<A>::makeSortedSectionsArray(uint32_t array[])
 	// sort by symbol table address
 	for (uint32_t i=0; i < _machOSectionsCount; ++i)
 		array[i] = i;
-	::qsort_r(array, _machOSectionsCount, sizeof(uint32_t), this, &sectionIndexSorter);
+	::qsort_r(array, _machOSectionsCount, sizeof(uint32_t), (__compar_d_fn_t) &sectionIndexSorter, this);
 
 	if ( log ) {
 		fprintf(stderr, "sorted sections:\n");
@@ -2503,7 +2503,7 @@ void Parser<A>::makeSortedSymbolsArray(uint32_t array[], const uint32_t sectionA
 	
 	// sort by symbol table address
 	ParserAndSectionsArray extra = { this, sectionArray };
-	::qsort_r(array, _symbolsInSections, sizeof(uint32_t), &extra, &symbolIndexSorter);
+	::qsort_r(array, _symbolsInSections, sizeof(uint32_t), (__compar_d_fn_t) &symbolIndexSorter, &extra);
 
 	
 	// look for two symbols at same address

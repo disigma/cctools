@@ -23,7 +23,9 @@
  */
  
 // start temp HACK for cross builds
+#if 0
 extern "C" double log2 ( double );
+#endif
 //#define __MATH__
 // end temp HACK for cross builds
 
