@@ -58,6 +58,10 @@ cc_check_members(statfs f_fstypename sys/types.h sys/param.h sys/mount.h)
 cc_check_members(statvfs f_fstypename sys/statvfs.h)
 cc_check_members(stat st_flags sys/stat.h)
 
+if(NOT HAVE_STRUCT_STAT_ST_FLAGS)
+    add_definitions("-DXAR_FLAG_FORK=\"flags\"")
+endif()
+
 cc_check_sizeof(uid_t)
 if(SIZEOF_UID_T EQUAL 4)
     add_definitions(-DUID_STRING=RId32)
