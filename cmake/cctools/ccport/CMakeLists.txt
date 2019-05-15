@@ -36,9 +36,11 @@ include_directories(
     include/kernel
     include/external
     ${CCTOOLS_ROOT}/include
+    $<TARGET_PROPERTY:uuid,INCLUDE_DIRECTORIES>
 )
 
 add_library(ccport ccport.c)
+target_link_libraries(ccport uuid)
 
 get_directory_property(CCPORT_DEFINITIONS COMPILE_DEFINITIONS)
 target_compile_definitions(ccport PUBLIC ${CCPORT_DEFINITIONS})

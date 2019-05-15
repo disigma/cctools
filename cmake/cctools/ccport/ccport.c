@@ -297,14 +297,3 @@ kern_return_t map_fd(
         return KERN_SUCCESS;
     }
 }
-
-#include <uuid/uuid.h>
-
-static void uuid_random_setflags(uint8_t *out) {
-    out[6] = (out[6] & 0x0F) | 0x40;
-    out[8] = (out[8] & 0x3F) | 0x80;
-}
-
-void uuid_generate_random(void *out) {
-    uuid_random_setflags(out);
-}
