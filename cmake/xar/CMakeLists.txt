@@ -110,6 +110,11 @@ else()
     message(FATAL_ERROR "can not detect the size of your system's dev_t type")
 endif()
 
+cc_check_compile_flag(-Wno-format)
+cc_check_compile_flag(-Wno-implicit-function-declaration)
+
+add_definitions(-DHAVE_LIBPTHREAD=1)
+
 # Sources
 include(CcLocateSources)
 cc_locate_sources(

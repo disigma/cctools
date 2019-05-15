@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 option(LLVM_ROOT "Source directory of llvm")
 option(CLANG_ROOT "Source directory of clang")
 option(TAPI_ROOT "Source directory of tapi")
+option(LD64_ROOT "Source directory of ld64")
 
 if(NOT LLVM_ROOT)
     set(LLVM_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../llvm")
@@ -13,6 +14,12 @@ endif()
 if(NOT TAPI_ROOT)
     set(TAPI_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../tapi")
 endif()
+if(NOT LD64_ROOT)
+    set(LD64_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../ld64")
+endif()
+
+set(LLVM_ENABLE_EH ON CACHE BOOL "" FORCE)
+set(LLVM_ENABLE_RTTI ON CACHE BOOL "" FORCE)
 
 # Skip unnecessary components
 set(LLVM_INCLUDE_BENCHMARKS OFF CACHE BOOL "")
@@ -38,9 +45,10 @@ set(LLVM_INSTALL_TOOLCHAIN_ONLY ON CACHE BOOL "")
 set(LLVM_TOOL_CLANG_BUILD ON CACHE BOOL "")
 set(LLVM_EXTERNAL_CLANG_SOURCE_DIR "${CLANG_ROOT}" CACHE STRING "")
 
-# Enable tapi
-set(LLVM_EXTERNAL_PROJECTS "tapi" CACHE STRING "")
+# Enable tapi and ld64
+set(LLVM_EXTERNAL_PROJECTS "tapi;ld64" CACHE STRING "" FORCE)
 set(LLVM_EXTERNAL_TAPI_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/tapi" CACHE STRING "")
+set(LLVM_EXTERNAL_LD64_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ld64" CACHE STRING "" FORCE)
 
 # Skip unnecessary components
 set(CLANG_INCLUDE_TESTS OFF CACHE BOOL "")

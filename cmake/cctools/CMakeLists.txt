@@ -20,12 +20,15 @@ add_compile_options(-include config.h)
 
 # Check and set compile flags
 include(CcChecks)
+cc_check_compile_flag(-Wno-attributes)
+cc_check_compile_flag(-Wno-deprecated)
+cc_check_compile_flag(-Wno-deprecated-declarations)
 cc_check_compile_flag(-Wno-format)
+cc_check_compile_flag(-Wno-gnu-include-next)
+cc_check_compile_flag(-Wno-implicit-function-declaration)
 cc_check_compile_flag(-Wno-incompatible-pointer-types)
 cc_check_compile_flag(-Wno-int-conversion)
-cc_check_compile_flag(-Wno-deprecated-declarations)
-cc_check_compile_flag(-Wno-deprecated)
-cc_check_compile_flag(-Wno-attributes)
+cc_check_compile_flag(-Wno-int-to-pointer-cast)
 
 # Macro for adding executables
 macro(cc_add_executable name)

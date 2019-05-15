@@ -16,6 +16,9 @@ set(CMAKE_C_STANDARD 99)
 
 include(CcChecks)
 cc_check_compile_flag(-fexceptions)
+cc_check_compile_flag(-Wno-deprecated-objc-isa-usage)
+cc_check_compile_flag(-Wno-incompatible-pointer-types-discards-qualifier)
+cc_check_compile_flag(-Wno-objc-root-class)
 
 add_definitions(
     -DGNUSTEP

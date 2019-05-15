@@ -11,4 +11,4 @@ add_subdirectory(libxml2)
 add_subdirectory(xar)
 add_subdirectory(llvm)
 
-add_dependencies(cctools tapi xar)
+add_dependencies(cctools ld64)
